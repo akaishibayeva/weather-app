@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Weather App</h1>
+    <form action="/" method="POST">
+      <label for="latitude">Latitude:</label>
+      <input type="text" id="latitude" name="latitude" required>
+      <label for="longitude">Longitude:</label>
+      <input type="text" id="longitude" name="longitude" required>
+      <label for="altitude">Altitude (optional):</label>
+      <input type="text" id="altitude" name="altitude">
+      <label for="dateTime">DateTime (optional, format: YYYY-MM-DDTHH:MM:SSZ):</label>
+      <input type="text" id="dateTime" name="dateTime">
+      <button type="submit">Get UV Data</button>
+    </form>
+
+    <% if (uvData) { %>
+      <div class="result">
+        <h2>UV Index</h2>
+        <p>UV Index: <%= uvData.uv %></p>
+        <p>UV Max: <%= uvData.uv_max %></p>
+        <p>UV Time: <%= uvData.uv_time %></p>
+      </div>
+    <% } %>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+  </div>
+</body>
+</html>
